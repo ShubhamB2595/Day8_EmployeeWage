@@ -6,6 +6,7 @@ public class Employee {
 
 	// declaring constants
 	static int WAGE_PER_HR = 20;
+	static int MAX_WORK_DAYS = 20;
 	static final int FULL_TIME = 1;
 	static final int PART_TIME = 2;
 	
@@ -19,29 +20,27 @@ public class Employee {
 	//method for checking attendance
 	private static int checkAttendance() {
 		int workHrs = 0;
-		int attendance = (int) Math.floor(Math.random() * 10 % 3);
-		switch(attendance) {
-		case FULL_TIME:
-			workHrs = 8;
-			System.out.println("Employee is present for full day");
-			return workHrs;
-		case PART_TIME:
-			workHrs = 4;
-			System.out.println("Employee is present for half day");
-			return workHrs;
-		default:
-			workHrs = 0;
-			System.out.println("Employee is absent");
-			return workHrs;
+		for (int i = 1; i<=MAX_WORK_DAYS; i++) {
+			int attendance = (int) Math.floor(Math.random() * 10 % 3);
+		
+			switch(attendance) {
+				case FULL_TIME:
+					workHrs += 8;
+				case PART_TIME:
+					workHrs += 4;
+				default:
+					workHrs += 0;
+			}
+			System.out.println("Employee is present for day: " + i + " Working Hrs: " + workHrs);
 		}
-			
+		return workHrs;	
 	}
 	
 	//method for calculating daily employee wage
 	private static void dailyWage() {
 		int workingHrs = checkAttendance();
 		int wage = workingHrs * WAGE_PER_HR;
-		System.out.println("Daily wage of employee is: " + wage);
+		System.out.println("Wage for a month of employee is: " + wage);
 		
 	}
 }
