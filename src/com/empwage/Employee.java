@@ -17,10 +17,15 @@ public class Employee {
 	//method for checking attendance
 	private static int checkAttendance() {
 		int workHrs = 0;
-		int attendance = (int) Math.floor(Math.random() * 10 % 2);
+		int attendance = (int) Math.floor(Math.random() * 10 % 3);
 		if (attendance == 1) {
 			workHrs = 8;
-			System.out.println("Employee is present");
+			System.out.println("Employee is present for full day");
+			return workHrs;
+		}
+		else if (attendance == 2) {
+			workHrs = 4;
+			System.out.println("Employee is present for half day");
 			return workHrs;
 		}
 		else {
