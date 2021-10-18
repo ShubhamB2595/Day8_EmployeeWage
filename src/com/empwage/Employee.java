@@ -5,9 +5,9 @@ package com.empwage;
 public class Employee {
 
 	// declaring constants
-	static int WAGE_PER_HR = 20;
-	static int MAX_WORK_DAYS = 20;
-	static int MAX_WORK_HRS = 100;
+	static final int WAGE_PER_HR = 20;
+	static final int MAX_WORK_DAYS = 20;
+	static final int MAX_WORK_HRS = 100;
 	static final int FULL_TIME = 1;
 	static final int PART_TIME = 2;
 	
@@ -15,11 +15,11 @@ public class Employee {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome to employee wage computation Program");
-		dailyWage();
+		calculateWage();
 	}
 	
 	//method for checking attendance
-	private static int checkAttendance() {
+	private static void calculateWage() {
 		int workHrs = 0;
 		int workDays = 0;
 		while (workHrs <= MAX_WORK_HRS && workDays < MAX_WORK_DAYS) {
@@ -36,14 +36,10 @@ public class Employee {
 			}
 			System.out.println("Employee is present for day: " + workDays + " Working Hrs: " + workHrs);
 		}
-		return workHrs;	
+			
+		int wage = workHrs * WAGE_PER_HR;
+		System.out.println("Wage for a month of employee is: " + wage);
+		return;
 	}
 	
-	//method for calculating daily employee wage
-	private static void dailyWage() {
-		int workingHrs = checkAttendance();
-		int wage = workingHrs * WAGE_PER_HR;
-		System.out.println("Wage for a month of employee is: " + wage);
-		
-	}
 }
